@@ -29,8 +29,9 @@ function executeScriptToCurrentTab(code) {
 }
 
 $('#draw_grad').click(() => {
-	console.log('hello world');
-	executeScriptToCurrentTab('alert("hello world");');
+
+	executeScriptToCurrentTab('init();');
+	executeScriptToCurrentTab('console.log("hello world");');
 });
 
 $('#screen_screenshot').click(() => {
