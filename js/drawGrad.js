@@ -106,6 +106,7 @@ function mouseupHandler() {
   clean();
   canvas.removeEventListener('mousemove', mousemoveHandler);
   drawYellowGrid();
+  stopDraw();
 }
 
 function startDraw() {
