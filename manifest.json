@@ -25,7 +25,7 @@
   ],
   "content_scripts": [{
     "matches": ["https://*.huiyihuiying.com/*"],
-    "js": ["js/drawGrad.js", "lib/html2canvas.min.js"],
+    "js": ["js/drawGrad.js"],
     "run_at": "document_end"
   }]
 
