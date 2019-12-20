@@ -1,3 +1,4 @@
+// TODO: 业务逻辑和功能要拆开
 var BORDER = 2;
 var gridNum = 3;
 var CANVAS_ID = "draw_grad";
