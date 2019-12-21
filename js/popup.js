@@ -32,7 +32,3 @@ $('#draw_grad').click(() => {
 	executeScriptToCurrentTab('init();');
 	executeScriptToCurrentTab('console.log("hello world");');
 });
-
-$('#screen_screenshot').click(() => {
-	executeScriptToCurrentTab('document.body.style.backgroundColor="red";')
-});
