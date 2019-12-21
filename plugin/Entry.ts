@@ -1,29 +1,32 @@
-import { DrawGrad } from "./DrawGrad";
+import DrawGrad from "./DrawGrad";
 
-function waitDomComplate() {
-  console.log("[Entry] waitDomComplate");
-  if (document.getElementById("0_0")) {
-    startPlgin();
-  } else {
-    setTimeout(waitDomComplate, 1000);
-  }
-}
+class Entry {
+  waitDomComplate = () => {
+    console.log("[Entry] waitDomComplate");
+    if (document.getElementById("0_0")) {
+      this.startPlgin();
+    } else {
+      setTimeout(this.waitDomComplate, 1000);
+    }
+  };
 
-function startPlgin() {
-  console.log("[Entry] startPlgin...");
-  var toolbar = document.getElementsByClassName("toolbar")[0];
-  var button = document.createElement("div");
-  button.id = "button";
-  button.style = "background: #FFF; width: 20px; height: 20px; margin: 20px;";
-  toolbar.appendChild(button);
-  button.addEventListener("mousedown", init);
-}
+  startPlgin = () => {
+    console.log("[Entry] startPlgin...");
+    const toolbar = document.getElementsByClassName("toolbar")[0];
+    const button = document.createElement("div");
+    button.id = "button";
+    button.style = "background: #FFF; width: 20px; height: 20px; margin: 20px;";
+    toolbar.appendChild(button);
+    button.addEventListener("mousedown", this.init);
+  };
 
-function init() {
-  console.log("[Entry] init...");
-  const d = new DrawGrad();
-  d.init();
+  init = () => {
+    console.log("[Entry] init...");
+    const d = new DrawGrad();
+    d.init();
+  };
 }
 
 console.log("entry init start...");
-waitDomComplate();
+const e = new Entry();
+e.waitDomComplate();

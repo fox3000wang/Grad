@@ -1,17 +1,17 @@
-export class DrawGrad {
-  constructor() {
-    this.CANVAS_ID = "draw_grad";
-    this.BROAD = 2;
-    this.gridNum = 3;
-    this.sX;
-    this.sY;
-    this.eX;
-    this.eY;
-    this.canvasWidth;
-    this.canvasHeight;
-    this.isInit = false;
-    this.canvas = null;
-  }
+export default class DrawGrad {
+  CANVAS_ID = "draw_grad";
+  BROAD: number = 2;
+  gridNum: number = 3;
+  sX: number = 0;
+  sY: number = 0;
+  eX: number = 0;
+  eY: number = 0;
+  canvasWidth: number = 0;
+  canvasHeight: number = 0;
+  isInit: boolean = false;
+  canvas: any = null;
+
+  constructor() {}
 
   init = () => {
     console.log("draw grad init.");
@@ -19,11 +19,11 @@ export class DrawGrad {
       return;
     }
 
-    let div = document.getElementById("0_0");
+    let div: any = document.getElementById("0_0");
     const canvas = document.createElement("canvas");
     div.appendChild(canvas);
 
-    const pic = document.getElementsByClassName("cornerstone-canvas")[0];
+    const pic: any = document.getElementsByClassName("cornerstone-canvas")[0];
     this.canvasWidth = canvas.width = pic.width;
     this.canvasHeight = canvas.height = pic.height;
     canvas.id = this.CANVAS_ID;
