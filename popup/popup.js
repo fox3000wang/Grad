@@ -30,5 +30,5 @@ function executeScriptToCurrentTab(code) {
 
 $('#draw_grad').click(() => {
 	executeScriptToCurrentTab('init();');
-	executeScriptToCurrentTab('console.log("hello world");');
+	executeScriptToCurrentTab('console.log("popup button click");');
 });

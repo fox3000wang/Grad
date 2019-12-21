@@ -10,7 +10,8 @@ var canvasHeight;
 var isInit = false;
 var canvas = null;
 
-function init() {
+var init = (function init() {
+  console.log("draw grad init.");
   if (document.getElementById(CANVAS_ID)) {
     return;
   }
@@ -26,6 +27,18 @@ function init() {
   canvas.style = "position: absolute; top:0; left:0";
 
   startDraw();
+})
+
+/* ========== 上面是业务逻辑，下面是具体功能 ========== */
+
+
+function startDraw() {
+  canvas.addEventListener('mousedown', mousedownHandler);
+  canvas.focus();
+}
+
+function stopDraw() {
+  canvas.removeEventListener('mousedown', mousedownHandler);
 }
 
 function clean() {
@@ -109,16 +122,3 @@ function mouseupHandler() {
   drawYellowGrid();
   stopDraw();
 }
-
-function startDraw() {
-  canvas.addEventListener('mousedown', mousedownHandler);
-  canvas.focus();
-}
-
-function stopDraw() {
-  canvas.removeEventListener('mousedown', mousedownHandler);
-}
-
-(function () {
-  // startDraw();
-})();
