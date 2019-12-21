@@ -13,7 +13,7 @@ function waitDomComplate() {
   if (document.getElementById("0_0")) {
     startPlgin();
   } else {
-    setTimeout("waitDomComplate()", 1000);
+    setTimeout(waitDomComplate, 1000);
   }
 }
 

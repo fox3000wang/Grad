@@ -2,6 +2,6 @@
 
 cp manifest.json dist
 cp icon.png dist
-cp popup.html dist
+cp popup/index.html dist/popup
 
-cp js/drawGrad.js dist/js
+#cp js/drawGrad.js dist/js

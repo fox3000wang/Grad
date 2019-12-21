@@ -1,17 +1,26 @@
 "use strict";
 const path = require("path");
+//const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "../"),
   entry: {
-    // 入口文件不能参与混淆
-    // drawGrad: path.resolve(__dirname, "../js/drawGrad.js"),
-    popup: path.resolve(__dirname, "../js/popup.js"),
-    jquery: path.resolve(__dirname, "../js/jquery.js"),
-    inject: path.resolve(__dirname, "../js/inject.js")
+    entry: path.resolve(__dirname, "../plugin/entry.js"),
+    drawGrad: path.resolve(__dirname, "../plugin/drawGrad.js"),
+    popup: path.resolve(__dirname, "../popup/popup.js"),
+    jquery: path.resolve(__dirname, "../popup/jquery.js"),
+    inject: path.resolve(__dirname, "../popup/inject.js")
   },
   output: {
-    path: path.resolve(__dirname, "../dist/js"),
+    path: path.resolve(__dirname, "../dist/plugin"),
     filename: "[name].js"
-  }
+  },
+  plugins: [
+    //new CleanWebpackPlugin(["dist"]),
+    // new HtmlWebpackPlugin({
+    //   title: "Hot Module Replacement"
+    // }),
+    //new webpack.NamedModulesPlugin(),
+    //new webpack.HotModuleReplacementPlugin()
+  ]
 };
