@@ -37,8 +37,8 @@ export default class DrawGrad {
 
   addGrid = () => {
     this.gridNum++;
-    clean();
-    drawYellowGrid();
+    this.clean();
+    this.drawYellowGrid();
   };
 
   decGrid = () => {
