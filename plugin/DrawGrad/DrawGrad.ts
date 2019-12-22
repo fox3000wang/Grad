@@ -1,5 +1,4 @@
 export default class DrawGrad {
-  CANVAS_ID = "draw_grad";
   BROAD: number = 2;
   gridNum: number = 3;
   sX: number = 0;
@@ -11,29 +10,9 @@ export default class DrawGrad {
   isInit: boolean = false;
   canvas: any = null;
 
-  constructor() {}
-
-  init = () => {
-    console.log("draw grad init.");
-    if (document.getElementById(this.CANVAS_ID)) {
-      return;
-    }
-
-    let div: any = document.getElementById("0_0");
-    const canvas = document.createElement("canvas");
-    div.appendChild(canvas);
-
-    const pic: any = document.getElementsByClassName("cornerstone-canvas")[0];
-    this.canvasWidth = canvas.width = pic.width;
-    this.canvasHeight = canvas.height = pic.height;
-    canvas.id = this.CANVAS_ID;
-    canvas.style = "position: absolute; top:0; left:0";
-
-    console.log("[DrawGrad] init");
+  constructor(canvas: any) {
     this.canvas = canvas;
-
-    this.startDraw();
-  };
+  }
 
   addGrid = () => {
     this.gridNum++;

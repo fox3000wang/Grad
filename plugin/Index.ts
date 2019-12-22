@@ -1,4 +1,4 @@
-import DrawGrad from "./DrawGrad";
+import DrawGrad from "./DrawGrad/Controller";
 
 class Entry {
   waitDomComplate = () => {
