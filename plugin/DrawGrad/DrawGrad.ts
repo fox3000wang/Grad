@@ -1,27 +1,28 @@
+import Grad from "./Grad";
+
 export default class DrawGrad {
-  BROAD: number = 2;
-  gridNum: number = 3;
-  sX: number = 0;
-  sY: number = 0;
-  eX: number = 0;
-  eY: number = 0;
-  canvasWidth: number = 0;
-  canvasHeight: number = 0;
-  isInit: boolean = false;
+  grad: Grad = null;
   canvas: any = null;
 
   constructor(canvas: any) {
     this.canvas = canvas;
   }
 
+  setGrad = grad => {
+    this.grad = grad;
+    this.canvas.width = grad.canvasWidth;
+    this.canvas.height = grad.canvasWidth;
+  };
+
   addGrid = () => {
-    this.gridNum++;
+    this.grad.gridNum++;
     this.clean();
     this.drawYellowGrid();
   };
 
   decGrid = () => {
-    this.gridNum = this.gridNum > 2 ? this.gridNum - 1 : this.gridNum;
+    this.grad.gridNum =
+      this.grad.gridNum > 2 ? this.grad.gridNum - 1 : this.grad.gridNum;
     this.clean();
     this.drawYellowGrid();
   };
@@ -41,20 +42,20 @@ export default class DrawGrad {
 
   clean = () => {
     const ctx = this.canvas.getContext("2d");
-    ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    ctx.clearRect(0, 0, this.grad.canvasWidth, this.grad.canvasHeight);
   };
 
   mousemoveHandler = target => {
     this.clean();
-    this.eX = target.offsetX;
-    this.eY = target.offsetY;
+    this.grad.eX = target.offsetX;
+    this.grad.eY = target.offsetY;
     this.drawGreenGrid();
   };
 
   mousedownHandler = target => {
     this.drawing();
-    this.sX = target.offsetX;
-    this.sY = target.offsetY;
+    this.grad.sX = target.offsetX;
+    this.grad.sY = target.offsetY;
     this.canvas.addEventListener("mouseup", this.mouseupHandler);
   };
 
@@ -73,12 +74,22 @@ export default class DrawGrad {
     ctx.fillStyle = "yellow";
     ctx.strokeStyle = "yellow";
 
-    const w = (this.eX - this.sX) / this.gridNum;
-    const h = (this.eY - this.sY) / this.gridNum;
+    const w = (this.grad.eX - this.grad.sX) / this.grad.gridNum;
+    const h = (this.grad.eY - this.grad.sY) / this.grad.gridNum;
 
-    for (let i = 0; i <= this.gridNum; i++) {
-      ctx.fillRect(this.sX + w * i, this.sY, this.BROAD, this.eY - this.sY + 1);
-      ctx.fillRect(this.sX, this.sY + h * i, this.eX - this.sX + 1, this.BROAD);
+    for (let i = 0; i <= this.grad.gridNum; i++) {
+      ctx.fillRect(
+        this.grad.sX + w * i,
+        this.grad.sY,
+        this.grad.broad,
+        this.grad.eY - this.grad.sY + 1
+      );
+      ctx.fillRect(
+        this.grad.sX,
+        this.grad.sY + h * i,
+        this.grad.eX - this.grad.sX + 1,
+        this.grad.broad
+      );
     }
   };
 
@@ -92,17 +103,27 @@ export default class DrawGrad {
 
     // 这里是画鼠标上面的圆圈
     ctx.beginPath();
-    ctx.arc(this.eX, this.eY, 8, 0, Math.PI * 2, true);
-    ctx.arc(this.eX, this.eY, 7, 0, Math.PI * 2, true);
+    ctx.arc(this.grad.eX, this.grad.eY, 8, 0, Math.PI * 2, true);
+    ctx.arc(this.grad.eX, this.grad.eY, 7, 0, Math.PI * 2, true);
     ctx.stroke();
     ctx.closePath();
 
-    const w = (this.eX - this.sX) / this.gridNum;
-    const h = (this.eY - this.sY) / this.gridNum;
+    const w = (this.grad.eX - this.grad.sX) / this.grad.gridNum;
+    const h = (this.grad.eY - this.grad.sY) / this.grad.gridNum;
 
-    for (let i = 0; i <= this.gridNum; i++) {
-      ctx.fillRect(this.sX + w * i, this.sY, this.BROAD, this.eY - this.sY + 1);
-      ctx.fillRect(this.sX, this.sY + h * i, this.eX - this.sX + 1, this.BROAD);
+    for (let i = 0; i <= this.grad.gridNum; i++) {
+      ctx.fillRect(
+        this.grad.sX + w * i,
+        this.grad.sY,
+        this.grad.broad,
+        this.grad.eY - this.grad.sY + 1
+      );
+      ctx.fillRect(
+        this.grad.sX,
+        this.grad.sY + h * i,
+        this.grad.eX - this.grad.sX + 1,
+        this.grad.broad
+      );
     }
   };
 }
