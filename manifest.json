@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "A draw grad example",
-  "description": "just a demo.",
+  "name": "Grad",
+  "description": "Add a draw grad features.",
   "version": "0.1.0",
 
   "browser_action": {
@@ -20,13 +20,12 @@
     "https://*/*"
   ],
 
-  "web_accessible_resources": [
-    "popup/inject.js"
-  ],
-  "content_scripts": [{
-    "matches": ["https://*.huiyihuiying.com/*"],
-    "js": ["plugin/entry.js"],
-    "run_at": "document_end"
-  }]
-
+  "web_accessible_resources": ["popup/inject.js"],
+  "content_scripts": [
+    {
+      "matches": ["https://*.huiyihuiying.com/*"],
+      "js": ["plugin/index.js"],
+      "run_at": "document_end"
+    }
+  ]
 }

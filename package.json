@@ -1,8 +1,8 @@
 {
-  "name": "grad",
-  "version": "1.0.0",
-  "description": "## 简介",
-  "main": "index.js",
+  "name": "Grad",
+  "version": "0.1.0",
+  "description": "## Add a draw grad features.",
+  "main": "plugin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "b": "rm -rf dist && node build/build.js && build/sync_file.sh",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/fox3000wang/grad_demo.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "fox1000wang@gmail.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fox3000wang/grad_demo/issues"
