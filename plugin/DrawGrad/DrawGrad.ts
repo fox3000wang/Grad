@@ -1,7 +1,7 @@
 import Grad from "./Grad";
 
 export default class DrawGrad {
-  grad: Grad = null;
+  private grad: Grad = null;
   canvas: any = null;
 
   constructor(canvas: any) {
@@ -74,23 +74,7 @@ export default class DrawGrad {
     ctx.fillStyle = "yellow";
     ctx.strokeStyle = "yellow";
 
-    const w = (this.grad.eX - this.grad.sX) / this.grad.gridNum;
-    const h = (this.grad.eY - this.grad.sY) / this.grad.gridNum;
-
-    for (let i = 0; i <= this.grad.gridNum; i++) {
-      ctx.fillRect(
-        this.grad.sX + w * i,
-        this.grad.sY,
-        this.grad.broad,
-        this.grad.eY - this.grad.sY + 1
-      );
-      ctx.fillRect(
-        this.grad.sX,
-        this.grad.sY + h * i,
-        this.grad.eX - this.grad.sX + 1,
-        this.grad.broad
-      );
-    }
+    this.drawLines(ctx);
   };
 
   /**
@@ -108,9 +92,12 @@ export default class DrawGrad {
     ctx.stroke();
     ctx.closePath();
 
+    this.drawLines(ctx);
+  };
+
+  drawLines = ctx => {
     const w = (this.grad.eX - this.grad.sX) / this.grad.gridNum;
     const h = (this.grad.eY - this.grad.sY) / this.grad.gridNum;
-
     for (let i = 0; i <= this.grad.gridNum; i++) {
       ctx.fillRect(
         this.grad.sX + w * i,

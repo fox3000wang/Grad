@@ -37,6 +37,6 @@ export default class DrawGradController {
     this.grad.canvasWidth = pic.width;
     this.grad.canvasHeight = pic.height;
     this.drawGrad.canvas.style = "position: absolute; top:0; left:0";
-    this.drawGrad.grad = this.grad;
+    this.drawGrad.setGrad(this.grad);
   };
 }
