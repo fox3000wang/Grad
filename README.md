@@ -1,6 +1,6 @@
 # Gard
 
-![](cover.jpeg)
+![](./cover.jpeg)
 
 ## 简介
 
