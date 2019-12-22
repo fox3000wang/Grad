@@ -8,7 +8,7 @@ export default class DrawGrad {
     this.canvas = canvas;
   }
 
-  setGrad = grad => {
+  setGrad = (grad: Grad) => {
     this.grad = grad;
     this.canvas.width = grad.canvasWidth;
     this.canvas.height = grad.canvasWidth;
@@ -45,14 +45,14 @@ export default class DrawGrad {
     ctx.clearRect(0, 0, this.grad.canvasWidth, this.grad.canvasHeight);
   };
 
-  mousemoveHandler = target => {
+  mousemoveHandler = (target: MouseEvent) => {
     this.clean();
     this.grad.eX = target.offsetX;
     this.grad.eY = target.offsetY;
     this.drawGreenGrid();
   };
 
-  mousedownHandler = target => {
+  mousedownHandler = (target: MouseEvent) => {
     this.drawing();
     this.grad.sX = target.offsetX;
     this.grad.sY = target.offsetY;
@@ -95,7 +95,7 @@ export default class DrawGrad {
     this.drawLines(ctx);
   };
 
-  drawLines = ctx => {
+  drawLines = (ctx: any) => {
     const w = (this.grad.eX - this.grad.sX) / this.grad.gridNum;
     const h = (this.grad.eY - this.grad.sY) / this.grad.gridNum;
     for (let i = 0; i <= this.grad.gridNum; i++) {
